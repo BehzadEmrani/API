@@ -13,6 +13,8 @@ namespace API.Controllers
         // GET: api/SiteUser
         public IEnumerable<string> Get()
         {
+
+
             return new string[] { "value1", "value2" };
         }
 
@@ -27,7 +29,7 @@ namespace API.Controllers
         {
             var luser = new Users();
             var luser1 = from a in db.Users
-                         where a.Name == siteUser.Name && a.Pass == siteUser.Pass && a.Active == true
+                         where a.Name == siteUser.Name && a.Active == true && a.Pass == siteUser.Pass 
                          select a;
             var myuser = luser1.ToList();
             luser.Role1 = myuser.ElementAt(0).Role1;
