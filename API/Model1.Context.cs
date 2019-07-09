@@ -29,5 +29,9 @@ namespace API
         public virtual DbSet<Servers> Servers { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<hardware_information> Hardware_Information { get; set; }
+
+        public virtual DbSet<server> server { get; set; }
+
     }
 }

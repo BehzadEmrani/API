@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SHS2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ServerComponent">
+    <Key>
+      <PropertyRef Name="ServerComponent_ID" />
+    </Key>
+    <Property Name="ServerComponent_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Server_ID" Type="Int32" Nullable="false" />
+    <Property Name="ComponentName" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Component_ID" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Servers" Relationship="Self.FK_ServerComponent_Server_ID" FromRole="ServerComponent" ToRole="Servers" />
+  </EntityType>
+  <EntityType Name="Servers">
+    <Key>
+      <PropertyRef Name="Server_ID" />
+    </Key>
+    <Property Name="Server_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SerialNumber" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DatePurchased" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TechSupportNo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MakeModel" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="AssetTagNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="WarrantyExpirationDate" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ServerComponent" Relationship="Self.FK_ServerComponent_Server_ID" FromRole="Servers" ToRole="ServerComponent" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Pass" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Role2" Type="Int16" Nullable="false" />
+    <Property Name="Role1" Type="Int16" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="Person_ID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ServerComponent_Server_ID">
+    <End Role="Servers" Type="Self.Servers" Multiplicity="1" />
+    <End Role="ServerComponent" Type="Self.ServerComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servers">
+        <PropertyRef Name="Server_ID" />
+      </Principal>
+      <Dependent Role="ServerComponent">
+        <PropertyRef Name="Server_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SHS2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ServerComponent" EntityType="Self.ServerComponent" />
+    <EntitySet Name="Servers" EntityType="Self.Servers" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_ServerComponent_Server_ID" Association="Self.FK_ServerComponent_Server_ID">
+      <End Role="Servers" EntitySet="Servers" />
+      <End Role="ServerComponent" EntitySet="ServerComponent" />
+    </AssociationSet>
+    <EntitySet Name="Person" EntityType="SHS2Model.Person" />
+    <EntitySet Name="hardware_information" EntityType="SHS2Model.hardware_information" />
+    <EntitySet Name="server" EntityType="SHS2Model.server" />
+  </EntityContainer>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="family" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="pass" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="hardware_information">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="number" Type="Int32" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="purchasedate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="purchaseorder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="warrantyexpirationdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="techsuportinfo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="os" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cpu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cpuspeed" Type="Int32" />
+    <Property Name="harddrive" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="videocard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="soundgraphic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="monitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="biosversion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="server">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hardware_information_id" Type="Int32" />
+    <Property Name="servername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="location" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="serverrole" Type="Int32" />
+    <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="serialnamber" Type="Int32" />
+    <Property Name="assesttagnumber" Type="Int32" />
+    <Property Name="datepurchased" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="purchaseorder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="techsuport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

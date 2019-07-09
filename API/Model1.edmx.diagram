@@ -10,6 +10,9 @@
         <EntityTypeShape EntityType="SHS2Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SHS2Model.Users" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="SHS2Model.FK_ServerComponent_Server_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SHS2Model.Person" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SHS2Model.hardware_information" Width="1.5" PointX="7.375" PointY="1" />
+        <EntityTypeShape EntityType="SHS2Model.server" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

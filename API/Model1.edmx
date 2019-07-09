@@ -4,7 +4,54 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SHS2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SHS2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="hardware_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number" Type="int" />
+          <Property Name="model" Type="varchar" MaxLength="50" />
+          <Property Name="purchasedate" Type="varchar" MaxLength="50" />
+          <Property Name="purchaseorder" Type="varchar" MaxLength="50" />
+          <Property Name="warrantyexpirationdate" Type="varchar" MaxLength="50" />
+          <Property Name="techsuportinfo" Type="varchar" MaxLength="50" />
+          <Property Name="os" Type="varchar" MaxLength="50" />
+          <Property Name="ram" Type="varchar" MaxLength="50" />
+          <Property Name="cpu" Type="varchar" MaxLength="50" />
+          <Property Name="cpuspeed" Type="int" />
+          <Property Name="harddrive" Type="varchar" MaxLength="50" />
+          <Property Name="videocard" Type="varchar" MaxLength="50" />
+          <Property Name="soundgraphic" Type="varchar" MaxLength="50" />
+          <Property Name="monitor" Type="varchar" MaxLength="50" />
+          <Property Name="biosversion" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="family" Type="varchar" MaxLength="100" />
+          <Property Name="username" Type="varchar(max)" />
+          <Property Name="pass" Type="char" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="server">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hardware_information_id" Type="int" />
+          <Property Name="servername" Type="varchar" MaxLength="50" />
+          <Property Name="location" Type="nchar" MaxLength="10" />
+          <Property Name="serverrole" Type="int" />
+          <Property Name="model" Type="varchar" MaxLength="50" />
+          <Property Name="serialnamber" Type="int" />
+          <Property Name="assesttagnumber" Type="int" />
+          <Property Name="datepurchased" Type="varchar" MaxLength="50" />
+          <Property Name="purchaseorder" Type="varchar" MaxLength="50" />
+          <Property Name="techsuport" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="ServerComponent">
           <Key>
             <PropertyRef Name="ServerComponent_ID" />
@@ -65,6 +112,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SHS2ModelStoreContainer">
+          <EntitySet Name="hardware_information" EntityType="Self.hardware_information" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="server" EntityType="Self.server" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServerComponent" EntityType="Self.ServerComponent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servers" EntityType="Self.Servers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -74,8 +124,7 @@
             <End Role="ServerComponent" EntitySet="ServerComponent" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SHS2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -149,67 +198,166 @@
             <End Role="Servers" EntitySet="Servers" />
             <End Role="ServerComponent" EntitySet="ServerComponent" />
           </AssociationSet>
+          <EntitySet Name="Person" EntityType="SHS2Model.Person" />
+          <EntitySet Name="hardware_information" EntityType="SHS2Model.hardware_information" />
+          <EntitySet Name="server" EntityType="SHS2Model.server" />
         </EntityContainer>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="family" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="hardware_information">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="number" Type="Int32" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="purchasedate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="purchaseorder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="warrantyexpirationdate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="techsuportinfo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="os" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpuspeed" Type="Int32" />
+          <Property Name="harddrive" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="videocard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="soundgraphic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="monitor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="biosversion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="server">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hardware_information_id" Type="Int32" />
+          <Property Name="servername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="location" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="serverrole" Type="Int32" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="serialnamber" Type="Int32" />
+          <Property Name="assesttagnumber" Type="Int32" />
+          <Property Name="datepurchased" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="purchaseorder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="techsuport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SHS2ModelStoreContainer" CdmEntityContainer="SHS2Entities">
-          <EntitySetMapping Name="ServerComponent">
-            <EntityTypeMapping TypeName="SHS2Model.ServerComponent">
-              <MappingFragment StoreEntitySet="ServerComponent">
-                <ScalarProperty Name="ServerComponent_ID" ColumnName="ServerComponent_ID" />
-                <ScalarProperty Name="Server_ID" ColumnName="Server_ID" />
-                <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
-                <ScalarProperty Name="Component_ID" ColumnName="Component_ID" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Servers">
-            <EntityTypeMapping TypeName="SHS2Model.Servers">
-              <MappingFragment StoreEntitySet="Servers">
-                <ScalarProperty Name="Server_ID" ColumnName="Server_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
-                <ScalarProperty Name="DatePurchased" ColumnName="DatePurchased" />
-                <ScalarProperty Name="TechSupportNo" ColumnName="TechSupportNo" />
-                <ScalarProperty Name="MakeModel" ColumnName="MakeModel" />
-                <ScalarProperty Name="AssetTagNumber" ColumnName="AssetTagNumber" />
-                <ScalarProperty Name="WarrantyExpirationDate" ColumnName="WarrantyExpirationDate" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="SHS2Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SHS2ModelStoreContainer" CdmEntityContainer="SHS2Entities">
+    <EntitySetMapping Name="ServerComponent">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.ServerComponent)">
+        <MappingFragment StoreEntitySet="ServerComponent">
+          <ScalarProperty Name="ServerComponent_ID" ColumnName="ServerComponent_ID" />
+          <ScalarProperty Name="Server_ID" ColumnName="Server_ID" />
+          <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+          <ScalarProperty Name="Component_ID" ColumnName="Component_ID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servers">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.Servers)">
+        <MappingFragment StoreEntitySet="Servers">
+          <ScalarProperty Name="Server_ID" ColumnName="Server_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="DatePurchased" ColumnName="DatePurchased" />
+          <ScalarProperty Name="TechSupportNo" ColumnName="TechSupportNo" />
+          <ScalarProperty Name="MakeModel" ColumnName="MakeModel" />
+          <ScalarProperty Name="AssetTagNumber" ColumnName="AssetTagNumber" />
+          <ScalarProperty Name="WarrantyExpirationDate" ColumnName="WarrantyExpirationDate" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.sysdiagrams)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Role2" ColumnName="Role2" />
+          <ScalarProperty Name="Role1" ColumnName="Role1" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="SHS2Model.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="family" ColumnName="family" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="SHS2Model.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="Role2" ColumnName="Role2" />
-                <ScalarProperty Name="Role1" ColumnName="Role1" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+          <EntitySetMapping Name="hardware_information">
+            <EntityTypeMapping TypeName="SHS2Model.hardware_information">
+              <MappingFragment StoreEntitySet="hardware_information">
+                <ScalarProperty Name="biosversion" ColumnName="biosversion" />
+                <ScalarProperty Name="monitor" ColumnName="monitor" />
+                <ScalarProperty Name="soundgraphic" ColumnName="soundgraphic" />
+                <ScalarProperty Name="videocard" ColumnName="videocard" />
+                <ScalarProperty Name="harddrive" ColumnName="harddrive" />
+                <ScalarProperty Name="cpuspeed" ColumnName="cpuspeed" />
+                <ScalarProperty Name="cpu" ColumnName="cpu" />
+                <ScalarProperty Name="ram" ColumnName="ram" />
+                <ScalarProperty Name="os" ColumnName="os" />
+                <ScalarProperty Name="techsuportinfo" ColumnName="techsuportinfo" />
+                <ScalarProperty Name="warrantyexpirationdate" ColumnName="warrantyexpirationdate" />
+                <ScalarProperty Name="purchaseorder" ColumnName="purchaseorder" />
+                <ScalarProperty Name="purchasedate" ColumnName="purchasedate" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+          <EntitySetMapping Name="server">
+            <EntityTypeMapping TypeName="SHS2Model.server">
+              <MappingFragment StoreEntitySet="server">
+                <ScalarProperty Name="techsuport" ColumnName="techsuport" />
+                <ScalarProperty Name="purchaseorder" ColumnName="purchaseorder" />
+                <ScalarProperty Name="datepurchased" ColumnName="datepurchased" />
+                <ScalarProperty Name="assesttagnumber" ColumnName="assesttagnumber" />
+                <ScalarProperty Name="serialnamber" ColumnName="serialnamber" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="serverrole" ColumnName="serverrole" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="servername" ColumnName="servername" />
+                <ScalarProperty Name="hardware_information_id" ColumnName="hardware_information_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -223,7 +371,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

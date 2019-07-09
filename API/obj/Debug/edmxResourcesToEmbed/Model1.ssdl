@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SHS2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="hardware_information">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="number" Type="int" />
+    <Property Name="model" Type="varchar" MaxLength="50" />
+    <Property Name="purchasedate" Type="varchar" MaxLength="50" />
+    <Property Name="purchaseorder" Type="varchar" MaxLength="50" />
+    <Property Name="warrantyexpirationdate" Type="varchar" MaxLength="50" />
+    <Property Name="techsuportinfo" Type="varchar" MaxLength="50" />
+    <Property Name="os" Type="varchar" MaxLength="50" />
+    <Property Name="ram" Type="varchar" MaxLength="50" />
+    <Property Name="cpu" Type="varchar" MaxLength="50" />
+    <Property Name="cpuspeed" Type="int" />
+    <Property Name="harddrive" Type="varchar" MaxLength="50" />
+    <Property Name="videocard" Type="varchar" MaxLength="50" />
+    <Property Name="soundgraphic" Type="varchar" MaxLength="50" />
+    <Property Name="monitor" Type="varchar" MaxLength="50" />
+    <Property Name="biosversion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="family" Type="varchar" MaxLength="100" />
+    <Property Name="username" Type="varchar(max)" />
+    <Property Name="pass" Type="char" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="server">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hardware_information_id" Type="int" />
+    <Property Name="servername" Type="varchar" MaxLength="50" />
+    <Property Name="location" Type="nchar" MaxLength="10" />
+    <Property Name="serverrole" Type="int" />
+    <Property Name="model" Type="varchar" MaxLength="50" />
+    <Property Name="serialnamber" Type="int" />
+    <Property Name="assesttagnumber" Type="int" />
+    <Property Name="datepurchased" Type="varchar" MaxLength="50" />
+    <Property Name="purchaseorder" Type="varchar" MaxLength="50" />
+    <Property Name="techsuport" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ServerComponent">
+    <Key>
+      <PropertyRef Name="ServerComponent_ID" />
+    </Key>
+    <Property Name="ServerComponent_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Server_ID" Type="int" Nullable="false" />
+    <Property Name="ComponentName" Type="char" MaxLength="40" Nullable="false" />
+    <Property Name="Component_ID" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Servers">
+    <Key>
+      <PropertyRef Name="Server_ID" />
+    </Key>
+    <Property Name="Server_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="SerialNumber" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="DatePurchased" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TechSupportNo" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="MakeModel" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="AssetTagNumber" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="WarrantyExpirationDate" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="RegisterDate" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="Pass" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="Role2" Type="smallint" Nullable="false" />
+    <Property Name="Role1" Type="smallint" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Person_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ServerComponent_Server_ID">
+    <End Role="Servers" Type="Self.Servers" Multiplicity="1" />
+    <End Role="ServerComponent" Type="Self.ServerComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Servers">
+        <PropertyRef Name="Server_ID" />
+      </Principal>
+      <Dependent Role="ServerComponent">
+        <PropertyRef Name="Server_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SHS2ModelStoreContainer">
+    <EntitySet Name="hardware_information" EntityType="Self.hardware_information" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="server" EntityType="Self.server" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServerComponent" EntityType="Self.ServerComponent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servers" EntityType="Self.Servers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ServerComponent_Server_ID" Association="Self.FK_ServerComponent_Server_ID">
+      <End Role="Servers" EntitySet="Servers" />
+      <End Role="ServerComponent" EntitySet="ServerComponent" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

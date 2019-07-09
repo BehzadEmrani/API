@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SHS2ModelStoreContainer" CdmEntityContainer="SHS2Entities">
+    <EntitySetMapping Name="ServerComponent">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.ServerComponent)">
+        <MappingFragment StoreEntitySet="ServerComponent">
+          <ScalarProperty Name="ServerComponent_ID" ColumnName="ServerComponent_ID" />
+          <ScalarProperty Name="Server_ID" ColumnName="Server_ID" />
+          <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+          <ScalarProperty Name="Component_ID" ColumnName="Component_ID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servers">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.Servers)">
+        <MappingFragment StoreEntitySet="Servers">
+          <ScalarProperty Name="Server_ID" ColumnName="Server_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="DatePurchased" ColumnName="DatePurchased" />
+          <ScalarProperty Name="TechSupportNo" ColumnName="TechSupportNo" />
+          <ScalarProperty Name="MakeModel" ColumnName="MakeModel" />
+          <ScalarProperty Name="AssetTagNumber" ColumnName="AssetTagNumber" />
+          <ScalarProperty Name="WarrantyExpirationDate" ColumnName="WarrantyExpirationDate" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.sysdiagrams)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(SHS2Model.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="Role2" ColumnName="Role2" />
+          <ScalarProperty Name="Role1" ColumnName="Role1" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Person">
+      <EntityTypeMapping TypeName="SHS2Model.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="family" ColumnName="family" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="hardware_information">
+      <EntityTypeMapping TypeName="SHS2Model.hardware_information">
+        <MappingFragment StoreEntitySet="hardware_information">
+          <ScalarProperty Name="biosversion" ColumnName="biosversion" />
+          <ScalarProperty Name="monitor" ColumnName="monitor" />
+          <ScalarProperty Name="soundgraphic" ColumnName="soundgraphic" />
+          <ScalarProperty Name="videocard" ColumnName="videocard" />
+          <ScalarProperty Name="harddrive" ColumnName="harddrive" />
+          <ScalarProperty Name="cpuspeed" ColumnName="cpuspeed" />
+          <ScalarProperty Name="cpu" ColumnName="cpu" />
+          <ScalarProperty Name="ram" ColumnName="ram" />
+          <ScalarProperty Name="os" ColumnName="os" />
+          <ScalarProperty Name="techsuportinfo" ColumnName="techsuportinfo" />
+          <ScalarProperty Name="warrantyexpirationdate" ColumnName="warrantyexpirationdate" />
+          <ScalarProperty Name="purchaseorder" ColumnName="purchaseorder" />
+          <ScalarProperty Name="purchasedate" ColumnName="purchasedate" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="number" ColumnName="number" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="server">
+      <EntityTypeMapping TypeName="SHS2Model.server">
+        <MappingFragment StoreEntitySet="server">
+          <ScalarProperty Name="techsuport" ColumnName="techsuport" />
+          <ScalarProperty Name="purchaseorder" ColumnName="purchaseorder" />
+          <ScalarProperty Name="datepurchased" ColumnName="datepurchased" />
+          <ScalarProperty Name="assesttagnumber" ColumnName="assesttagnumber" />
+          <ScalarProperty Name="serialnamber" ColumnName="serialnamber" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="serverrole" ColumnName="serverrole" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="servername" ColumnName="servername" />
+          <ScalarProperty Name="hardware_information_id" ColumnName="hardware_information_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
