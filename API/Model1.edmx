@@ -7,16 +7,16 @@
     <Schema Namespace="SHS2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Person">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Person_ID" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="char" MaxLength="10" />
-          <Property Name="NationalId" Type="char" MaxLength="10" />
-          <Property Name="Age" Type="char" MaxLength="10" />
-          <Property Name="PersonalCode" Type="char" MaxLength="10" />
-          <Property Name="PhoneNumber" Type="char" MaxLength="10" />
-          <Property Name="UserName" Type="char" MaxLength="10" />
-          <Property Name="Password" Type="char" MaxLength="10" />
+          <Property Name="Person_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="NationalId" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Age" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="PersonalCode" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="PhoneNumber" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="UserName" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="char" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="ServerComponent">
           <Key>
@@ -53,6 +53,14 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="tessssssssssssssst">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="fname" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="User_ID" />
@@ -82,6 +90,7 @@
           <EntitySet Name="ServerComponent" EntityType="Self.ServerComponent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servers" EntityType="Self.Servers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tessssssssssssssst" EntityType="Self.tessssssssssssssst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ServerComponent_Server_ID" Association="Self.FK_ServerComponent_Server_ID">
             <End Role="Servers" EntitySet="Servers" />
@@ -163,19 +172,28 @@
             <End Role="ServerComponent" EntitySet="ServerComponent" />
           </AssociationSet>
           <EntitySet Name="Person" EntityType="SHS2Model.Person" />
+          <EntitySet Name="tessssssssssssssst" EntityType="SHS2Model.tessssssssssssssst" />
         </EntityContainer>
         <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Person_ID" />
+          </Key>
+          <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NationalId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Age" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="PersonalCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tessssssssssssssst">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="NationalId" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="Age" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="PersonalCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -244,6 +262,15 @@
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="NationalId" ColumnName="NationalId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tessssssssssssssst">
+            <EntityTypeMapping TypeName="SHS2Model.tessssssssssssssst">
+              <MappingFragment StoreEntitySet="tessssssssssssssst">
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

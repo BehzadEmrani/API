@@ -62,6 +62,15 @@
           <ScalarProperty Name="Age" ColumnName="Age" />
           <ScalarProperty Name="NationalId" ColumnName="NationalId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tessssssssssssssst">
+      <EntityTypeMapping TypeName="SHS2Model.tessssssssssssssst">
+        <MappingFragment StoreEntitySet="tessssssssssssssst">
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

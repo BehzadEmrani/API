@@ -71,18 +71,27 @@
       <End Role="ServerComponent" EntitySet="ServerComponent" />
     </AssociationSet>
     <EntitySet Name="Person" EntityType="SHS2Model.Person" />
+    <EntitySet Name="tessssssssssssssst" EntityType="SHS2Model.tessssssssssssssst" />
   </EntityContainer>
   <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Person_ID" />
+    </Key>
+    <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="NationalId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Age" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="PersonalCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tessssssssssssssst">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="NationalId" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Age" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="PersonalCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="fname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
 </Schema>
