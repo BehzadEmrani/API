@@ -46,10 +46,10 @@ namespace API.Controllers
 
 
 
-            // /////////////////////
+          
             var luser = new Person();
             var luser1 = from b in db.Person
-                         where b.UserName == siteUser.UserName
+                         where b.Name == siteUser.Name
                          select b;
             //           var myuser = luser1.ToList();
             //           return Ok(luser);
@@ -89,13 +89,14 @@ namespace API.Controllers
             }
             else
             {
-                luser.Name = "Repeated";
+                luser.UserName = "Repeated";
                 return Ok(luser);
             }
+            // ///////////  
+
 
 
         }
-
 
 
 
