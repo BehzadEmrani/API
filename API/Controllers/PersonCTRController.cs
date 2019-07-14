@@ -46,10 +46,10 @@ namespace API.Controllers
 
 
 
-          
+            // /////////////////////
             var luser = new Person();
             var luser1 = from b in db.Person
-                         where b.Name == siteUser.Name
+                         where b.UserName == siteUser.UserName
                          select b;
             //           var myuser = luser1.ToList();
             //           return Ok(luser);
@@ -68,7 +68,7 @@ namespace API.Controllers
                               select b;
                 if (person1.ToList().Count == 0)
                 {
-                    a.Age = siteUser.PersonalCode;
+                                    a.Age = siteUser.PersonalCode;
                     a.PersonalCode = siteUser.PersonalCode;
                     a.PhoneNumber = siteUser.PhoneNumber;
                     a.UserName = siteUser.UserName;
@@ -83,7 +83,7 @@ namespace API.Controllers
                 }
                 else
                 {
-                    luser.NationalId = "Registered";
+                    luser.NationalId= "Registerd";
                     return Ok(luser);
                 }
             }
@@ -92,25 +92,23 @@ namespace API.Controllers
                 luser.UserName = "Repeated";
                 return Ok(luser);
             }
-            // ///////////  
 
-
-
+     
         }
 
-
+      
 
 
 
         // PUT: api/PersonCTR/5
         public void Put(int id, [FromBody]string value)
-        {
-        }
+            {
+            }
 
-        // DELETE: api/PersonCTR/5
-        public void Delete(int id)
-        {
+            // DELETE: api/PersonCTR/5
+            public void Delete(int id)
+            {
+            }
         }
     }
-}
 
