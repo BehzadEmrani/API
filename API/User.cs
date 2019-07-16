@@ -12,7 +12,7 @@ namespace API
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class User
     {
         public long User_ID { get; set; }
         public string Name { get; set; }

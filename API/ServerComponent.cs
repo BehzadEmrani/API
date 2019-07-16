@@ -20,6 +20,6 @@ namespace API
         public int Component_ID { get; set; }
         public bool Active { get; set; }
     
-        public virtual Servers Servers { get; set; }
+        public virtual Server Server { get; set; }
     }
 }

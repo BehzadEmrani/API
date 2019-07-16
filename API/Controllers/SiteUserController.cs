@@ -25,9 +25,9 @@ namespace API.Controllers
         }
 
         // POST: api/SiteUser
-        public IHttpActionResult Post([FromBody]Users siteUser)
+        public IHttpActionResult Post([FromBody]User siteUser)
         {
-            var luser = new Users();
+            var luser = new User();
             var luser1 = from a in db.Users
                          where a.Name == siteUser.Name && a.Active == true && a.Pass == siteUser.Pass 
                          select a;

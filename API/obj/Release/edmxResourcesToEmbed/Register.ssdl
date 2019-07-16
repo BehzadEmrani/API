@@ -14,7 +14,22 @@
     <Property Name="Password" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="LastName" Type="char" MaxLength="10" />
   </EntityType>
+  <EntityType Name="Register">
+    <Key>
+      <PropertyRef Name="Register_ID" />
+    </Key>
+    <Property Name="Register_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="char" MaxLength="10" />
+    <Property Name="LastName" Type="char" MaxLength="10" />
+    <Property Name="NationalId" Type="char" MaxLength="10" />
+    <Property Name="Age" Type="char" MaxLength="10" />
+    <Property Name="PersonalCode" Type="char" MaxLength="10" />
+    <Property Name="PhoneNumber" Type="char" MaxLength="10" />
+    <Property Name="UserName" Type="char" MaxLength="10" />
+    <Property Name="Password" Type="char" MaxLength="10" />
+  </EntityType>
   <EntityContainer Name="SHS2ModelStoreContainer">
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Register" EntityType="Self.Register" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

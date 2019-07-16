@@ -1,5 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SHS2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Person_ID" />
+    </Key>
+    <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NationalId" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Age" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PersonalCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
   <EntityType Name="ServerComponent">
     <Key>
       <PropertyRef Name="ServerComponent_ID" />
@@ -9,9 +23,9 @@
     <Property Name="ComponentName" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Component_ID" Type="Int32" Nullable="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Servers" Relationship="Self.FK_ServerComponent_Server_ID" FromRole="ServerComponent" ToRole="Servers" />
+    <NavigationProperty Name="Server" Relationship="Self.FK_ServerComponent_Server_ID" FromRole="ServerComponent" ToRole="Servers" />
   </EntityType>
-  <EntityType Name="Servers">
+  <EntityType Name="Server">
     <Key>
       <PropertyRef Name="Server_ID" />
     </Key>
@@ -25,9 +39,9 @@
     <Property Name="WarrantyExpirationDate" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <Property Name="RegisterDate" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="ServerComponent" Relationship="Self.FK_ServerComponent_Server_ID" FromRole="Servers" ToRole="ServerComponent" />
+    <NavigationProperty Name="ServerComponents" Relationship="Self.FK_ServerComponent_Server_ID" FromRole="Servers" ToRole="ServerComponent" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
+  <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -37,7 +51,7 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="Users">
+  <EntityType Name="User">
     <Key>
       <PropertyRef Name="User_ID" />
     </Key>
@@ -50,7 +64,7 @@
     <Property Name="Person_ID" Type="Int64" Nullable="false" />
   </EntityType>
   <Association Name="FK_ServerComponent_Server_ID">
-    <End Role="Servers" Type="Self.Servers" Multiplicity="1" />
+    <End Role="Servers" Type="Self.Server" Multiplicity="1" />
     <End Role="ServerComponent" Type="Self.ServerComponent" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Servers">
@@ -62,36 +76,14 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="SHS2Entities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="ServerComponent" EntityType="Self.ServerComponent" />
-    <EntitySet Name="Servers" EntityType="Self.Servers" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="ServerComponents" EntityType="Self.ServerComponent" />
+    <EntitySet Name="Servers" EntityType="Self.Server" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Users" EntityType="Self.User" />
     <AssociationSet Name="FK_ServerComponent_Server_ID" Association="Self.FK_ServerComponent_Server_ID">
       <End Role="Servers" EntitySet="Servers" />
-      <End Role="ServerComponent" EntitySet="ServerComponent" />
+      <End Role="ServerComponent" EntitySet="ServerComponents" />
     </AssociationSet>
-    <EntitySet Name="Person" EntityType="SHS2Model.Person" />
-    <EntitySet Name="tessssssssssssssst" EntityType="SHS2Model.tessssssssssssssst" />
   </EntityContainer>
-  <EntityType Name="Person">
-    <Key>
-      <PropertyRef Name="Person_ID" />
-    </Key>
-    <Property Name="Person_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="NationalId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Age" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="PersonalCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="UserName" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Password" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-  </EntityType>
-  <EntityType Name="tessssssssssssssst">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <Property Name="fname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-  </EntityType>
 </Schema>

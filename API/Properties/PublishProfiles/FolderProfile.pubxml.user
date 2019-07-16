@@ -79,10 +79,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2019 13:00:51</publishTime>
     </File>
     <File Include="bin/API.dll">
-      <publishTime>07/14/2019 14:58:29</publishTime>
+      <publishTime>07/16/2019 10:41:03</publishTime>
     </File>
     <File Include="bin/API.pdb">
-      <publishTime>07/14/2019 14:58:29</publishTime>
+      <publishTime>07/16/2019 10:41:03</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/14/2019 13:00:51</publishTime>
@@ -327,14 +327,35 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Global.asax">
       <publishTime>07/14/2019 13:00:51</publishTime>
     </File>
+    <File Include="Model1.Context.cs">
+      <publishTime>07/16/2019 09:50:16</publishTime>
+    </File>
+    <File Include="Model1.Context.tt">
+      <publishTime>07/16/2019 09:50:11</publishTime>
+    </File>
+    <File Include="Model1.cs">
+      <publishTime>07/16/2019 09:50:23</publishTime>
+    </File>
+    <File Include="Model1.Designer.cs">
+      <publishTime>07/16/2019 09:55:28</publishTime>
+    </File>
+    <File Include="Model1.edmx">
+      <publishTime>07/16/2019 09:55:28</publishTime>
+    </File>
     <File Include="Model1.edmx.diagram">
-      <publishTime>07/14/2019 13:10:52</publishTime>
+      <publishTime>07/16/2019 09:55:28</publishTime>
     </File>
     <File Include="Model1.edmx.sql">
-      <publishTime>07/14/2019 13:00:51</publishTime>
+      <publishTime>07/16/2019 08:54:35</publishTime>
+    </File>
+    <File Include="Model1.tt">
+      <publishTime>07/16/2019 09:50:11</publishTime>
+    </File>
+    <File Include="Person.cs">
+      <publishTime>07/16/2019 09:50:23</publishTime>
     </File>
     <File Include="Person.edmx.diagram">
-      <publishTime>07/14/2019 13:21:18</publishTime>
+      <publishTime>07/16/2019 08:51:23</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>07/14/2019 13:00:51</publishTime>
@@ -363,8 +384,20 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>07/14/2019 13:00:51</publishTime>
     </File>
+    <File Include="Server.cs">
+      <publishTime>07/16/2019 09:50:23</publishTime>
+    </File>
+    <File Include="ServerComponent.cs">
+      <publishTime>07/16/2019 09:50:23</publishTime>
+    </File>
     <File Include="SHS2.sql">
-      <publishTime>07/14/2019 13:00:51</publishTime>
+      <publishTime>07/16/2019 09:11:39</publishTime>
+    </File>
+    <File Include="sysdiagram.cs">
+      <publishTime>07/16/2019 09:50:23</publishTime>
+    </File>
+    <File Include="User.cs">
+      <publishTime>07/16/2019 09:50:22</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>07/14/2019 13:00:51</publishTime>
@@ -382,7 +415,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2019 13:00:51</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/14/2019 13:22:41</publishTime>
+      <publishTime>07/16/2019 10:01:40</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -25,11 +25,10 @@ namespace API
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ServerComponent> ServerComponent { get; set; }
-        public virtual DbSet<Servers> Servers { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Person> Person { get; set; }
-
+        public virtual DbSet<Person> People { get; set; }
+        public virtual DbSet<ServerComponent> ServerComponents { get; set; }
+        public virtual DbSet<Server> Servers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

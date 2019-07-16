@@ -12,12 +12,12 @@ namespace API
     using System;
     using System.Collections.Generic;
     
-    public partial class Servers
+    public partial class Server
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Servers()
+        public Server()
         {
-            this.ServerComponent = new HashSet<ServerComponent>();
+            this.ServerComponents = new HashSet<ServerComponent>();
         }
     
         public int Server_ID { get; set; }
@@ -32,6 +32,6 @@ namespace API
         public string RegisterDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServerComponent> ServerComponent { get; set; }
+        public virtual ICollection<ServerComponent> ServerComponents { get; set; }
     }
 }

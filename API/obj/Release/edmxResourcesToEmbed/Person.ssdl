@@ -12,6 +12,7 @@
     <Property Name="PhoneNumber" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="UserName" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="Password" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="LastName" Type="char" MaxLength="10" />
   </EntityType>
   <EntityContainer Name="SHS2ModelStoreContainer">
     <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />

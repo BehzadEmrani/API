@@ -22,7 +22,7 @@ namespace API.Controllers
         // GET: api/PersonCTR
         public IEnumerable<Person> Get()
         {
-            var luser1 = from a in db.Person
+            var luser1 = from a in db.People
                          select a;
             var myuser = luser1.ToList();
             return myuser;
@@ -48,12 +48,16 @@ namespace API.Controllers
 
             // /////////////////////
             var luser = new Person();
-            var luser1 = from b in db.Person
-                         where b.UserName == siteUser.UserName
-                         select b;
-            //           var myuser = luser1.ToList();
-            //           return Ok(luser);
-
+                       var luser1 = from b in db.People
+                                    where b.UserName == siteUser.UserName
+                                    select b;
+                                 //var myuser = luser1.ToList();
+            //luser.Name = myuser.ElementAt(0).Name;
+            //luser.LastName = luser1.ToList().Count.ToString();
+//            luser.Name = luser1.;
+            //return Ok(luser);
+           
+  //          return Ok(siteUser);
 
 
             if (luser1.ToList().Count == 0)
@@ -61,21 +65,25 @@ namespace API.Controllers
 
 
                 Person a = new Person();
-                a.Name = siteUser.Name;
+
+                a.LastName = siteUser.LastName;
                 a.NationalId = siteUser.NationalId;
-                var person1 = from b in db.Person
-                              where b.Name == siteUser.Name && b.NationalId == siteUser.NationalId
+                
+                var person1 = from b in db.People
+                              where b.LastName==siteUser.LastName && b.NationalId == siteUser.NationalId
                               select b;
                 if (person1.ToList().Count == 0)
                 {
-                                    a.Age = siteUser.PersonalCode;
+                    //a.LastName = siteUser.LastName;
+                    a.Name = siteUser.Name;
+                    a.Age = siteUser.PersonalCode;
                     a.PersonalCode = siteUser.PersonalCode;
                     a.PhoneNumber = siteUser.PhoneNumber;
                     a.UserName = siteUser.UserName;
                     a.Password = siteUser.Password;
 
 
-                    db.Person.Add(a);
+                    db.People.Add(a);
                     db.SaveChangesAsync();
                     return Ok(siteUser);
 

@@ -12,6 +12,7 @@
     <Property Name="PhoneNumber" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="UserName" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="Password" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="LastName" Type="char" MaxLength="10" />
   </EntityType>
   <EntityType Name="ServerComponent">
     <Key>
@@ -48,14 +49,6 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <EntityType Name="tessssssssssssssst">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="10" />
-    <Property Name="fname" Type="nchar" MaxLength="10" />
-  </EntityType>
   <EntityType Name="Users">
     <Key>
       <PropertyRef Name="User_ID" />
@@ -85,7 +78,6 @@
     <EntitySet Name="ServerComponent" EntityType="Self.ServerComponent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Servers" EntityType="Self.Servers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="tessssssssssssssst" EntityType="Self.tessssssssssssssst" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ServerComponent_Server_ID" Association="Self.FK_ServerComponent_Server_ID">
       <End Role="Servers" EntitySet="Servers" />
