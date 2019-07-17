@@ -22,7 +22,7 @@ namespace API.Controllers
         // GET: api/PersonCTR
         public IEnumerable<Person> Get()
         {
-            var luser1 = from a in db.People
+            var luser1 = from a in db.Person
                          select a;
             var myuser = luser1.ToList();
             return myuser;
@@ -48,16 +48,9 @@ namespace API.Controllers
 
             // /////////////////////
             var luser = new Person();
-                       var luser1 = from b in db.People
+                       var luser1 = from b in db.Person
                                     where b.UserName == siteUser.UserName
                                     select b;
-                                 //var myuser = luser1.ToList();
-            //luser.Name = myuser.ElementAt(0).Name;
-            //luser.LastName = luser1.ToList().Count.ToString();
-//            luser.Name = luser1.;
-            //return Ok(luser);
-           
-  //          return Ok(siteUser);
 
 
             if (luser1.ToList().Count == 0)
@@ -69,7 +62,7 @@ namespace API.Controllers
                 a.LastName = siteUser.LastName;
                 a.NationalId = siteUser.NationalId;
                 
-                var person1 = from b in db.People
+                var person1 = from b in db.Person
                               where b.LastName==siteUser.LastName && b.NationalId == siteUser.NationalId
                               select b;
                 if (person1.ToList().Count == 0)
@@ -83,7 +76,7 @@ namespace API.Controllers
                     a.Password = siteUser.Password;
 
 
-                    db.People.Add(a);
+                    db.Person.Add(a);
                     db.SaveChangesAsync();
                     return Ok(siteUser);
 
