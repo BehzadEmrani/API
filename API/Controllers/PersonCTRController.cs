@@ -59,15 +59,15 @@ namespace API.Controllers
 
                 Person a = new Person();
 
-                a.LastName = siteUser.LastName;
+               // a.LastName = siteUser.LastName;
                 a.NationalId = siteUser.NationalId;
                 
                 var person1 = from b in db.Person
-                              where b.LastName==siteUser.LastName && b.NationalId == siteUser.NationalId
+                              where b.NationalId == siteUser.NationalId //&& b.LastName == siteUser.LastName
                               select b;
                 if (person1.ToList().Count == 0)
                 {
-                    //a.LastName = siteUser.LastName;
+                    a.LastName = siteUser.LastName;
                     a.Name = siteUser.Name;
                     a.Age = siteUser.PersonalCode;
                     a.PersonalCode = siteUser.PersonalCode;
