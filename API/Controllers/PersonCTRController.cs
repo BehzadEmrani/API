@@ -74,6 +74,7 @@ namespace API.Controllers
                     a.PhoneNumber = siteUser.PhoneNumber;
                     a.UserName = siteUser.UserName;
                     a.Password = siteUser.Password;
+                    a.Active = "1";
 
 
                     db.Person.Add(a);
