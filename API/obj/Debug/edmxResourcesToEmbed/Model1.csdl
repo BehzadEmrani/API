@@ -13,6 +13,7 @@
     <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Active" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
   </EntityType>
   <EntityType Name="ServerComponent">
     <Key>
