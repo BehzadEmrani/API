@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -48,9 +48,9 @@ namespace API.Controllers
 
             // /////////////////////
             var luser = new Person();
-                       var luser1 = from b in db.Person
-                                    where b.UserName == siteUser.UserName
-                                    select b;
+            var luser1 = from b in db.Person
+                         where b.UserName == siteUser.UserName
+                         select b;
 
 
             if (luser1.ToList().Count == 0)
@@ -59,9 +59,9 @@ namespace API.Controllers
 
                 Person a = new Person();
 
-               // a.LastName = siteUser.LastName;
+                // a.LastName = siteUser.LastName;
                 a.NationalId = siteUser.NationalId;
-                
+
                 var person1 = from b in db.Person
                               where b.NationalId == siteUser.NationalId //&& b.LastName == siteUser.LastName
                               select b;
@@ -85,7 +85,7 @@ namespace API.Controllers
                 }
                 else
                 {
-                    luser.NationalId= "Registerd";
+                    luser.NationalId = "Registerd";
                     return Ok(luser);
                 }
             }
@@ -95,22 +95,22 @@ namespace API.Controllers
                 return Ok(luser);
             }
 
-     
+
         }
 
-      
+
 
 
 
         // PUT: api/PersonCTR/5
         public void Put(int id, [FromBody]string value)
-            {
-            }
+        {
+        }
 
-            // DELETE: api/PersonCTR/5
-            public void Delete(int id)
-            {
-            }
+        // DELETE: api/PersonCTR/5
+        public void Delete(int id)
+        {
         }
     }
+}
 
