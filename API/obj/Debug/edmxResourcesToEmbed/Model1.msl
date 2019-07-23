@@ -4,7 +4,6 @@
     <EntitySetMapping Name="People">
       <EntityTypeMapping TypeName="SHS2Model.Person">
         <MappingFragment StoreEntitySet="Person">
-          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="Person_ID" ColumnName="Person_ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="NationalId" ColumnName="NationalId" />
@@ -14,6 +13,7 @@
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

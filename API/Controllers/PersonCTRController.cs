@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -99,18 +99,17 @@ namespace API.Controllers
         }
 
 
-
-
-
         // PUT: api/PersonCTR/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE: api/PersonCTR/5
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            Person luser = db.Person.Single(course => course.NationalId == id);
+            luser.Active = "0";
+            db.SaveChangesAsync();
         }
     }
 }
-
