@@ -63,7 +63,7 @@ namespace API.Controllers
                 a.NationalId = siteUser.NationalId;
 
                 var person1 = from b in db.Person
-                              where b.NationalId == siteUser.NationalId //&& b.LastName == siteUser.LastName
+                              where b.NationalId == siteUser.NationalId
                               select b;
                 if (person1.ToList().Count == 0)
                 {
@@ -99,17 +99,39 @@ namespace API.Controllers
         }
 
 
-        // PUT: api/PersonCTR/5
-        public void Put(int id, [FromBody]string value)
+        // PUT: api/PersonCTR/5----- Edit Person
+        public void Put([FromBody]Person siteUser)
         {
+           
+
+
+            Person luser = db.Person.Single(course => course.NationalId == siteUser.NationalId);
+
+
+                luser.LastName = siteUser.LastName;
+                luser.Name = siteUser.Name;
+                luser.Age = siteUser.PersonalCode;
+                luser.PersonalCode = siteUser.PersonalCode;
+                luser.PhoneNumber = siteUser.PhoneNumber;
+                luser.UserName = siteUser.UserName;
+                luser.Password = siteUser.Password;
+                luser.Active = "1";
+
+                db.SaveChangesAsync();
+
+
+            
+
         }
 
-        // DELETE: api/PersonCTR/5
-        public void Delete(string id)
-        {
-            Person luser = db.Person.Single(course => course.NationalId == id);
-            luser.Active = "0";
-            db.SaveChangesAsync();
+
+
+            // DELETE: api/PersonCTR/5
+            public void Delete(string id)
+            {
+                Person luser = db.Person.Single(course => course.NationalId == id);
+                luser.Active = "0";
+                db.SaveChangesAsync();
+            }
         }
     }
-}
