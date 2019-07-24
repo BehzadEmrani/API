@@ -115,7 +115,8 @@ namespace API.Controllers
                 luser.PhoneNumber = siteUser.PhoneNumber;
                 luser.UserName = siteUser.UserName;
                 luser.Password = siteUser.Password;
-                luser.Active = "1";
+                luser.Active = siteUser.Active;
+  
 
                 db.SaveChangesAsync();
 

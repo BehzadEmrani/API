@@ -24,5 +24,7 @@ namespace API
         public string Password { get; set; }
         public string LastName { get; set; }
         public string Active { get; set; }
+        public string Iflag { get; set; }
+
     }
 }
