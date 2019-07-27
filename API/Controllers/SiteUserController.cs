@@ -9,7 +9,7 @@ namespace API.Controllers
 {
     public class SiteUserController : ApiController
     {
-        private SHS2Entities db = new SHS2Entities();
+        private SHS2Entities1 db = new SHS2Entities1();
         // GET: api/SiteUser
         public IEnumerable<string> Get()
         {

@@ -13,10 +13,10 @@ namespace API
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SHS2Entities : DbContext
+    public partial class SHS2Entities1 : DbContext
     {
-        public SHS2Entities()
-            : base("name=SHS2Entities")
+        public SHS2Entities1()
+            : base("name=SHS2Entities1")
         {
         }
     

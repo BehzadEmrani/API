@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SHS2ModelStoreContainer" CdmEntityContainer="SHS2Entities">
+  <EntityContainerMapping StorageEntityContainer="SHS2ModelStoreContainer" CdmEntityContainer="SHS2Entities1">
     <EntitySetMapping Name="People">
       <EntityTypeMapping TypeName="SHS2Model.Person">
         <MappingFragment StoreEntitySet="Person">
@@ -14,6 +14,7 @@
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="OldNI" ColumnName="OldNI" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

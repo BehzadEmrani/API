@@ -9,12 +9,18 @@ using System.Web.Http.Results;
 using System.Web.Mvc;
 using HttpPostAttribute = System.Web.Mvc.HttpPostAttribute;
 
+
 namespace API.Controllers
 {
     public class PersonCTRController : ApiController
     {
 
-        private SHS2Entities db = new SHS2Entities();
+
+        private SHS2Entities1 db = new SHS2Entities1();
+
+
+
+
 
 
 
@@ -30,11 +36,18 @@ namespace API.Controllers
 
 
 
+
+
+
         // GET: api/PersonCTR/5
         public string Get(int id)
         {
             return "value";
         }
+
+
+
+
 
 
 
@@ -46,6 +59,9 @@ namespace API.Controllers
 
 
 
+
+
+
             // /////////////////////
             var luser = new Person();
             var luser1 = from b in db.Person
@@ -53,14 +69,20 @@ namespace API.Controllers
                          select b;
 
 
+
+
             if (luser1.ToList().Count == 0)
             {
 
 
+
+
                 Person a = new Person();
+
 
                 // a.LastName = siteUser.LastName;
                 a.NationalId = siteUser.NationalId;
+
 
                 var person1 = from b in db.Person
                               where b.NationalId == siteUser.NationalId
@@ -77,9 +99,13 @@ namespace API.Controllers
                     a.Active = "1";
 
 
+
+
                     db.Person.Add(a);
                     db.SaveChangesAsync();
                     return Ok(siteUser);
+
+
 
 
                 }
@@ -96,43 +122,54 @@ namespace API.Controllers
             }
 
 
+
+
         }
+
+
 
 
         // PUT: api/PersonCTR/5----- Edit Person
         public void Put([FromBody]Person siteUser)
         {
-           
 
 
-            Person luser = db.Person.Single(course => course.NationalId == siteUser.NationalId);
 
 
-                luser.LastName = siteUser.LastName;
-                luser.Name = siteUser.Name;
-                luser.Age = siteUser.PersonalCode;
-                luser.PersonalCode = siteUser.PersonalCode;
-                luser.PhoneNumber = siteUser.PhoneNumber;
-                luser.UserName = siteUser.UserName;
-                luser.Password = siteUser.Password;
-                luser.Active = siteUser.Active;
-  
 
-                db.SaveChangesAsync();
+            Person luser = db.Person.Single(course => course.OldNI == siteUser.OldNI);
 
 
+
+
+            luser.LastName = siteUser.LastName;
+            luser.Name = siteUser.Name;
+            luser.Age = siteUser.PersonalCode;
+            luser.PersonalCode = siteUser.PersonalCode;
+            luser.PhoneNumber = siteUser.PhoneNumber;
+            luser.UserName = siteUser.UserName;
+            luser.Password = siteUser.Password;
+            luser.Active = siteUser.Active;
+            luser.NationalId = siteUser.NationalId;
+            luser.OldNI = siteUser.NationalId;
             
 
+
+
+            db.SaveChangesAsync();
+
         }
 
 
 
-            // DELETE: api/PersonCTR/5
-            public void Delete(string id)
-            {
-                Person luser = db.Person.Single(course => course.NationalId == id);
-                luser.Active = "0";
-                db.SaveChangesAsync();
-            }
+
+        // DELETE: api/PersonCTR/5
+        public void Delete(string id)
+        {
+            Person luser = db.Person.Single(course => course.NationalId == id);
+            luser.Active = "0";
+            db.SaveChangesAsync();
         }
     }
+}
+
