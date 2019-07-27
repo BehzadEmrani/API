@@ -96,6 +96,7 @@ namespace API.Controllers
                     a.PhoneNumber = siteUser.PhoneNumber;
                     a.UserName = siteUser.UserName;
                     a.Password = siteUser.Password;
+                    a.OldNI = siteUser.NationalId;
                     a.Active = "1";
 
 
