@@ -12,9 +12,9 @@
     <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-    <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Active" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="OldNI" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Active" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OldNI" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="ServerComponent">
     <Key>
@@ -77,7 +77,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SHS2Entities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="SHS2Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="People" EntityType="Self.Person" />
     <EntitySet Name="ServerComponents" EntityType="Self.ServerComponent" />
     <EntitySet Name="Servers" EntityType="Self.Server" />

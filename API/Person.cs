@@ -16,14 +16,14 @@ namespace API
     {
         public int Person_ID { get; set; }
         public string Name { get; set; }
-        public string NationalId { get; set; }
-        public string Age { get; set; }
-        public string PersonalCode { get; set; }
-        public string PhoneNumber { get; set; }
+        public int NationalId { get; set; }
+        public int Age { get; set; }
+        public int PersonalCode { get; set; }
+        public int PhoneNumber { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string LastName { get; set; }
-        public string Active { get; set; }
-        public string OldNI { get; set; }
+        public bool Active { get; set; }
+        public int OldNI { get; set; }
     }
 }

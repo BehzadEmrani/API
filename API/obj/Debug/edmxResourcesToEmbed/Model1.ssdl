@@ -12,9 +12,9 @@
     <Property Name="PhoneNumber" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="UserName" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="Password" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="LastName" Type="char" MaxLength="10" />
-    <Property Name="Active" Type="char" MaxLength="10" />
-    <Property Name="OldNI" Type="char" MaxLength="10" />
+    <Property Name="LastName" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Active" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="OldNI" Type="char" MaxLength="10" Nullable="false" />
   </EntityType>
   <EntityType Name="ServerComponent">
     <Key>

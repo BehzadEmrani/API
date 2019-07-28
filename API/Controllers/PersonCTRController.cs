@@ -16,11 +16,7 @@ namespace API.Controllers
     {
 
 
-        private SHS2Entities1 db = new SHS2Entities1();
-
-
-
-
+        private SHS2Entities db = new SHS2Entities();
 
 
 
@@ -44,10 +40,6 @@ namespace API.Controllers
         {
             return "value";
         }
-
-
-
-
 
 
 
@@ -89,15 +81,20 @@ namespace API.Controllers
                               select b;
                 if (person1.ToList().Count == 0)
                 {
-                    a.LastName = siteUser.LastName;
-                    a.Name = siteUser.Name;
-                    a.Age = siteUser.PersonalCode;
-                    a.PersonalCode = siteUser.PersonalCode;
-                    a.PhoneNumber = siteUser.PhoneNumber;
-                    a.UserName = siteUser.UserName;
-                    a.Password = siteUser.Password;
-                    a.OldNI = siteUser.NationalId;
-                    a.Active = "1";
+
+                    if (siteUser.LastName != "" && siteUser.Name != "" && siteUser.Age !=0 && siteUser.PersonalCode !=0 &&
+                        siteUser.PhoneNumber !=0 && siteUser.UserName != "" && siteUser.Password != "" && siteUser.NationalId!=0)
+                    {
+                        a.LastName = siteUser.LastName;
+                        a.Name = siteUser.Name;
+                        a.Age = siteUser.Age;
+                        a.PersonalCode = siteUser.PersonalCode;
+                        a.PhoneNumber = siteUser.PhoneNumber;
+                        a.UserName = siteUser.UserName;
+                        a.Password = siteUser.Password;
+                        a.OldNI = siteUser.NationalId;
+                        a.Active = true;
+                    }
 
 
 
@@ -105,14 +102,14 @@ namespace API.Controllers
                     db.Person.Add(a);
                     db.SaveChangesAsync();
                     return Ok(siteUser);
-
+                      
 
 
 
                 }
                 else
                 {
-                    luser.NationalId = "Registerd";
+                    luser.UserName = "Registered";
                     return Ok(luser);
                 }
             }
@@ -123,10 +120,7 @@ namespace API.Controllers
             }
 
 
-
-
         }
-
 
 
 
@@ -136,39 +130,39 @@ namespace API.Controllers
 
 
 
-
-
             Person luser = db.Person.Single(course => course.OldNI == siteUser.OldNI);
 
 
+            //if (siteUser.LastName != "" && siteUser.Name != "" && siteUser.Age != 0 && siteUser.PersonalCode !=0 &&
+            //    siteUser.PhoneNumber !=0 && siteUser.UserName != "" && siteUser.Password != "" && siteUser.NationalId !=0)
+            //{
 
 
-            luser.LastName = siteUser.LastName;
-            luser.Name = siteUser.Name;
-            luser.Age = siteUser.PersonalCode;
-            luser.PersonalCode = siteUser.PersonalCode;
-            luser.PhoneNumber = siteUser.PhoneNumber;
-            luser.UserName = siteUser.UserName;
-            luser.Password = siteUser.Password;
-            luser.Active = siteUser.Active;
-            luser.NationalId = siteUser.NationalId;
-            luser.OldNI = siteUser.NationalId;
-            
+                luser.LastName = siteUser.LastName;
+                luser.Name = siteUser.Name;
+                luser.Age = Convert.ToInt32(siteUser.PersonalCode);
+                luser.PersonalCode = siteUser.PersonalCode;
+                luser.PhoneNumber = siteUser.PhoneNumber;
+                luser.UserName = siteUser.UserName;
+                luser.Password = siteUser.Password;
+                luser.Active = siteUser.Active;
+                luser.NationalId = siteUser.NationalId;
+                luser.OldNI = siteUser.NationalId;
+
+                //  }
 
 
+                db.SaveChangesAsync();
+            //}
 
-            db.SaveChangesAsync();
 
         }
 
-
-
-
         // DELETE: api/PersonCTR/5
-        public void Delete(string id)
+        public void Delete(int id)
         {
-            Person luser = db.Person.Single(course => course.NationalId == id);
-            luser.Active = "0";
+            Person luser = db.Person.Single( course => course.NationalId  == id );
+            luser.Active = false;
             db.SaveChangesAsync();
         }
     }
