@@ -6,15 +6,15 @@
     </Key>
     <Property Name="Person_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="NationalId" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="Age" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="PersonalCode" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="PhoneNumber" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="NationalId" Type="int" Nullable="false" />
+    <Property Name="Age" Type="int" Nullable="false" />
+    <Property Name="PersonalCode" Type="int" Nullable="false" />
+    <Property Name="PhoneNumber" Type="int" Nullable="false" />
     <Property Name="UserName" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="Password" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="LastName" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="Active" Type="char" MaxLength="10" Nullable="false" />
-    <Property Name="OldNI" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="OldNI" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ServerComponent">
     <Key>

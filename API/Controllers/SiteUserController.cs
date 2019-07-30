@@ -36,6 +36,12 @@ namespace API.Controllers
             return Ok(luser);
         }
 
+
+
+    
+
+
+
         // PUT: api/SiteUser/5
         public void Put(int id, [FromBody]string value)
         {
