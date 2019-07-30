@@ -162,13 +162,13 @@ namespace API.Controllers
 
                 return Ok(siteUser);
             }
-           
+
         }
 
 
 
-        // DELETE: api/PersonCTR/5
-        public void Delete(int id)
+            // DELETE: api/PersonCTR/5
+            public void Delete(int id)
         {
             Person luser = db.Person.Single(course => course.NationalId == id);
             luser.Active = false;

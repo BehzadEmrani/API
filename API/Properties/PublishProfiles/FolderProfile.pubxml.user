@@ -79,10 +79,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/14/2019 13:00:51</publishTime>
     </File>
     <File Include="bin/API.dll">
-      <publishTime>07/30/2019 10:48:54</publishTime>
+      <publishTime>07/30/2019 15:26:21</publishTime>
     </File>
     <File Include="bin/API.pdb">
-      <publishTime>07/30/2019 10:48:54</publishTime>
+      <publishTime>07/30/2019 15:26:21</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/14/2019 13:00:51</publishTime>
