@@ -133,18 +133,25 @@ namespace API.Controllers
         // PUT: api/PersonCTR/5----- Edit Part2
         public IHttpActionResult Put([FromBody]Person siteUser)
         {
-
-
-            Person luser = db.Person.Single(course => course.OldNI == siteUser.OldNI);
-
-            if (luser.NationalId == siteUser.NationalId || luser.UserName == siteUser.UserName)
+            //siteUser.Name = "Hasan";
+            //goto exit;
+            Person luser = new Person();
+            var muluser = db.Person.Where(course => course.NationalId == siteUser.NationalId && course.Person_ID != siteUser.Person_ID);
+            if (muluser.ToList().Count > 0)
+            //if (luser.Person_ID == siteUser.Person_ID || luser.UserName.Trim() == siteUser.UserName.Trim())
             {
-                luser.UserName = "Registered";
-                return Ok(luser);
+                luser.UserName = "Repeated National Id";
+                goto exit;
             }
-
-            else
+            var myluser = db.Person.Where(course => course.UserName == siteUser.UserName && course.Person_ID != siteUser.Person_ID);
+            if (myluser.ToList().Count > 0)
+            //if (luser.Person_ID == siteUser.Person_ID || luser.UserName.Trim() == siteUser.UserName.Trim())
             {
+                luser.UserName = "Repeated UserName";
+                goto exit;
+            }
+                var luser1 = db.Person.Where(course => course.Person_ID == siteUser.Person_ID);
+                luser = luser1.ToList().ElementAt(0);
                 luser.LastName = siteUser.LastName;
                 luser.Name = siteUser.Name;
                 luser.Age = Convert.ToInt32(siteUser.Age);
@@ -155,13 +162,9 @@ namespace API.Controllers
                 luser.Active = siteUser.Active;
                 luser.NationalId = siteUser.NationalId;
                 luser.OldNI = siteUser.NationalId;
-
-
-
                 db.SaveChangesAsync();
-
-                return Ok(siteUser);
-            }
+                exit:;
+                return Ok(luser);
 
         }
 
