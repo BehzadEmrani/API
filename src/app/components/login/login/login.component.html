@@ -1,0 +1,65 @@
+<form [formGroup]="currentFrom" class="example-form">
+  <div fxLayout="row" fxFlexFill fxLayoutAlign="start center">
+    <mat-form-field fxFlex class="example-full-width" appearance="fill">
+      <mat-label> <mat-icon matPrefix>person</mat-icon> Email</mat-label>
+      <input
+        type="email"
+        matInput
+        lang="en_US"
+        formControlName="email"
+        [errorStateMatcher]="matcher"
+        placeholder="Ex. pat@example.com"
+      />
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxFlexFill fxLayoutAlign="start center">
+    <mat-form-field fxFlex class="example-full-width" appearance="fill">
+      <mat-label>
+        <mat-icon matPrefix>power_input</mat-icon> Password
+      </mat-label>
+      <input
+        [type]="isType"
+        matInput
+        formControlName="password"
+        [errorStateMatcher]="matcher"
+      />
+
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error
+        *ngIf="
+          passwordFormControl.hasError('password') &&
+          !passwordFormControl.hasError('required')
+        "
+      >
+        Please enter a valid password address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-icon
+      fxFlex
+      mat-button
+      (click)="visibility(isType)"
+      [ngClass]="isColor ? 'green' : ''"
+      >visibility</mat-icon
+    >
+  </div>
+  <div class="btn">
+    <button fxFlex mat-raised-button class="example-full-width" color="primary">
+      Sign in
+    </button>
+  </div>
+</form>
