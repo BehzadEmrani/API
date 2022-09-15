@@ -94,6 +94,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
         });
       }
     });
+    
   }
   initForm() {
     this.currentFrom = this.fb.group({
