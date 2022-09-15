@@ -6,8 +6,15 @@
 
 .example-full-width {
   width: 92%;
+  flex: 2 1 auto;
+}
+.mobileMode {
+  width: 10px;
 }
 
 .green {
   color: green;
+}
+.mat-icon {
+  font-size: 18px;
 }

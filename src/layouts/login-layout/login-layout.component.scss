@@ -1,12 +1,6 @@
 .home {
   width: 100%;
-  .card {
-    margin: 10% auto;
-    width: 30%;
-    border: 40px solid green;
-    padding: 10px;
-    border-radius: 20px;
-  }
+  height: auto 500%;
   .card {
     margin: 10% auto;
     width: 30%;
@@ -22,7 +16,14 @@
   left: 10px;
 }
 
-
 .example-sidenav {
-  padding: 10%
+  border-bottom-right-radius: 50%;
+  border-top-right-radius: 50%;
+  width: 30%;
+  padding: 10%;
+  background-color: rgb(235, 230, 230);
+}
+
+.mat-drawer-content {
+  height: 120%;
 }

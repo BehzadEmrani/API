@@ -1,4 +1,5 @@
 <div class="home">
+  <!-- *ngIf="isMobile" -->
   <div class="row">
     <button mat-raised-button class="menu" (click)="drawer.toggle()">
       <mat-icon matPrefix>menu</mat-icon>
@@ -6,7 +7,12 @@
   </div>
 
   <mat-drawer-container class="example-container">
-    <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-drawer
+      #drawer
+      [opened]="!isMobile"
+      class="example-sidenav"
+      mode="side"
+    >
       I'm a drawer
     </mat-drawer>
     <mat-drawer-content>
@@ -15,5 +21,4 @@
       </mat-card>
     </mat-drawer-content>
   </mat-drawer-container>
-
 </div>
